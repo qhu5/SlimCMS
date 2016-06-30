@@ -59,9 +59,9 @@ $app->post('/admin/login', function () use ($app) {
     if ($config['user'] == $user && $config['password'] == $pass) {
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
-        $app->redirect($config['url2'].'/admin/pages');
+        $app->redirect($config['url'].'/admin/pages');
     } else {
-        $app->redirect($config['url2'].'/admin');
+        $app->redirect($config['url'].'/admin');
     }
 });
 
@@ -149,7 +149,7 @@ $app->get('/admin/config', $authenticate($app), function () use ($app) {
 $app->get('/admin/media', $authenticate($app), function () use ($app) {
     $twig_vars = $app->config('twigVars');
     $config = $twig_vars['config'];
-    $media = lib\SlimCMS::getMedia($config['url']);
+    $media = lib\SlimCMS::getMedia($config['static_url']);
     $twig_vars['media'] = $media;
 
     $app->view->setTemplatesDirectory("admin/");
@@ -254,7 +254,7 @@ $app->post('/api/config', function () use ($app) {
 $app->get('/api/media', function () use ($app) {
     $twig_vars = $app->config('twigVars');
     $config = $twig_vars['config'];
-    $media = lib\SlimCMS::getMedia($config['url']);
+    $media = lib\SlimCMS::getMedia($config['static_url']);
     echo json_encode($media);
 });
 

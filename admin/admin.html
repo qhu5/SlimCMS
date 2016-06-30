@@ -9,10 +9,10 @@
     <title>SlimCMS Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ config.url }}/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="{{ config.url }}/admin/css/style.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -26,7 +26,7 @@
                     <h3 class="panel-title">Please sign in</h3>
                 </div>
                 <div class="panel-body">
-                    <form accept-charset="UTF-8" role="form" action="{{config.url2}}/admin/login" method="POST">
+                    <form accept-charset="UTF-8" role="form" action="{{config.url}}/admin/login" method="POST">
                         <fieldset>
                             <div class="form-group">
                                 <input class="form-control" placeholder="User" name="user" type="text">
@@ -51,6 +51,6 @@
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- Make sure to add jQuery - download the most recent version at http://jquery.com/ -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{ config.static_url }}/themes/default/js/vendor/jquery.js"></script>
 </body>
 </html>

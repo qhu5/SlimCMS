@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{page.Title}}</title>
-    <link rel="stylesheet" href="{{config.url}}/themes/{{config.theme}}/css/normalize.css" />
-    <link rel="stylesheet" href="{{config.url}}/themes/{{config.theme}}/css/foundation.min.css" />
-    <script src="{{config.url}}/themes/{{config.theme}}/js/modernizr.js"></script>
+    <link rel="stylesheet" href="{{config.static_url}}/themes/{{config.theme}}/css/normalize.css" />
+    <link rel="stylesheet" href="{{config.static_url}}/themes/{{config.theme}}/css/foundation.min.css" />
+    <script src="{{config.static_url}}/themes/{{config.theme}}/js/modernizr.js"></script>
     {% endblock %}
 </head>
 <body>
@@ -59,8 +59,8 @@
     </div>
 </footer>
 
-<script src="{{config.url}}/themes/{{config.theme}}/js/jquery.js"></script>
-<script src="{{config.url}}/themes/{{config.theme}}/js/foundation.min.js"></script>
+<script src="{{config.static_url}}/themes/{{config.theme}}/js/jquery.js"></script>
+<script src="{{config.static_url}}/themes/{{config.theme}}/js/foundation.min.js"></script>
 <script>
     $(document).foundation();
 </script>

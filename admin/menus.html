@@ -9,10 +9,10 @@
     <title>SlimCMS Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{config.url}}/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{config.static_url}}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="{{config.url}}/admin/css/style.css" rel="stylesheet">
+    <link href="{{config.static_url}}/admin/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -100,10 +100,10 @@
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- Make sure to add jQuery - download the most recent version at http://jquery.com/ -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="{{config.url}}/admin/js/underscore-min.js"></script>
-<script src="{{config.url}}/admin/js/Util.js"></script>
-<script src="{{config.url}}/admin/js/bootstrap.min.js"></script>
+<script src="{{ config.static_url }}/themes/default/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="{{config.static_url}}/admin/js/underscore-min.js"></script>
+<script src="{{config.static_url}}/admin/js/Util.js"></script>
+<script src="{{config.static_url}}/admin/js/bootstrap.min.js"></script>
 
 <script id="tplAddVar" type="text/x-underscore-template">
     <div id="Variable-<%= id %>" data-id="<%= id %>" style="min-height: 60px;" class="divVariableInputs">

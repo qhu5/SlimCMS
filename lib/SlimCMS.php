@@ -41,14 +41,14 @@ class SlimCMS {
             $folder = "";
 
         $path = $_SERVER['DOCUMENT_ROOT'].$folder;  // localhost:8098/vendor/SlimCMS
-        $url = "http://".$_SERVER['HTTP_HOST'].$folder;
-        $url2 = "http://".$_SERVER['HTTP_HOST'].$folder.'/index.php';
+        $url = "http://".$_SERVER['HTTP_HOST'].$folder.'/index.php';
+        $static_url = "http://".$_SERVER['HTTP_HOST'].$folder;
 
         $config = Json::read("content/config.json");
 
         if (!isset($config['url']) || $config['url'] == "")
             $config['url'] = $url;
-            $config['url2'] = $url2;
+            $config['static_url'] = $static_url;
         $config['path'] = $path;
         return $config;
     }

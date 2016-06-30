@@ -33,13 +33,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{config.url}}/admin/pages">Pages</a></li>
-                <li class="active"><a href="{{config.url}}/admin/blog">Blog</a></li>
-                <li><a href="{{config.url}}/admin/menus">Menus</a></li>
-                <li><a href="{{config.url}}/admin/media">Media</a></li>
-                <li><a href="{{config.url}}/admin/config">Config</a></li>
+                <li><a href="{{config.url2}}/admin/pages">Pages</a></li>
+                <li class="active"><a href="{{config.url2}}/admin/blog">Blog</a></li>
+                <li><a href="{{config.url2}}/admin/menus">Menus</a></li>
+                <li><a href="{{config.url2}}/admin/media">Media</a></li>
+                <li><a href="{{config.url2}}/admin/config">Config</a></li>
             </ul>
-            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url}}/admin/logout" class="navbar-link">Logout</a></p>
+            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url2}}/admin/logout" class="navbar-link">Logout</a></p>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
@@ -51,7 +51,7 @@
             <ul class="list-group">
                 {% for post in blog %}
                 <li class="list-group-item">
-                    <a href="{{config.url}}/blog/{{post.Slug|e}}">{{post.Title}}</a>
+                    <a href="{{config.url2}}/blog/{{post.Slug|e}}">{{post.Title}}</a>
                     <button id="del-{{post.DateTime}}_{{post.Slug}}" data-slug="{{post.DateTime}}_{{post.Slug}}" type="button" class="btn btn-danger btn-xs delete" title="Delete" style="float: right;">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
@@ -98,7 +98,7 @@
     $(document).ready(function() {
         $( 'textarea.editor' ).ckeditor({
             "extraPlugins": "imagebrowser",
-            "imageBrowser_listUrl": "{{config.url}}/api/media"
+            "imageBrowser_listUrl": "{{config.url2}}/api/media"
         });
 
         $("#inputTitle").on("focusout", function(){
@@ -119,7 +119,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{config.url}}/api/blog",
+                url: "{{config.url2}}/api/blog",
                 //dataType: "JSON",
                 data: theData,
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -135,18 +135,18 @@
             var slug = $(this).data("slug");
             $.ajax({
                 type: "DELETE",
-                url: "{{config.url}}/api/blog/"+slug,
+                url: "{{config.url2}}/api/blog/"+slug,
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown.message);
                 },
                 success: function(msg) {
-                    window.location = "{{config.url}}/admin/blog";
+                    window.location = "{{config.url2}}/admin/blog";
                 }
             });
         });
 
         $(".edit").on("click", function(){
-            window.location = "{{config.url}}/admin/blog/" + $(this).data("slug");
+            window.location = "{{config.url2}}/admin/blog/" + $(this).data("slug");
         });
     });
 </script>

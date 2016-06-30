@@ -13,11 +13,11 @@ class SlimCMS {
 
     // Get the config
     public static function getTwigVars(){
-        $config = SlimCMS::getConfig();
-        $menus = SlimCMS::getMenu('menu');
-        $pages = SlimCMS::getAllFrom('pages');
-        $blog = SlimCMS::getAllFrom('blog');
-        $themes = SlimCMS::getThemes($config['path']."/themes");
+        $config = self::getConfig();
+        $menus = self::getMenu('menu');
+        $pages = self::getAllFrom('pages');
+        $blog = self::getAllFrom('blog');
+        $themes = self::getThemes($config['path']."/themes");
 
         $twig_vars = array(
             'config' => $config,
@@ -32,18 +32,23 @@ class SlimCMS {
 
     // Get the config
     public static function getConfig(){
-        if ($_SERVER['HTTP_HOST'] == "localhost")
-            $folder = "/SlimCMS";
+        if (!defined('HTTP_HOST')) {
+          define('HTTP_HOST', $_SERVER['HTTP_HOST']);
+        }
+        if (strpos(HTTP_HOST, "localhost") !== false)
+            $folder = "/vendor/SlimCMS";
         else
             $folder = "";
 
-        $path = $_SERVER['DOCUMENT_ROOT'].$folder;
+        $path = $_SERVER['DOCUMENT_ROOT'].$folder;  // localhost:8098/vendor/SlimCMS
         $url = "http://".$_SERVER['HTTP_HOST'].$folder;
+        $url2 = "http://".$_SERVER['HTTP_HOST'].$folder.'/index.php';
 
         $config = Json::read("content/config.json");
 
         if (!isset($config['url']) || $config['url'] == "")
             $config['url'] = $url;
+            $config['url2'] = $url2;
         $config['path'] = $path;
         return $config;
     }
@@ -74,10 +79,11 @@ class SlimCMS {
                 $fileNames[str_replace(".json", "", $file->getFilename())] = $menu;
             }
         }
-        if (isset($fileNames))
+        if (isset($fileNames)) {
             return $fileNames;
-        else
+        } else {
             return "";
+        }
     }
 
     // Get all the Templates by Folder
@@ -146,4 +152,4 @@ class SlimCMS {
     public static function delFile($file, $folder) {
         unlink($folder . $file);
     }
-} 
+}

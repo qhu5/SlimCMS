@@ -59,9 +59,9 @@ $app->post('/admin/login', function () use ($app) {
     if ($config['user'] == $user && $config['password'] == $pass) {
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
-        $app->redirect($config['url'].'/admin/pages');
+        $app->redirect($config['url2'].'/admin/pages');
     } else {
-        $app->redirect($config['url'].'/admin');
+        $app->redirect($config['url2'].'/admin');
     }
 });
 

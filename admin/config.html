@@ -33,14 +33,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{config.url}}/admin/pages">Pages</a></li>
-                <li><a href="{{config.url}}/admin/blog">Blog</a></li>
-                <li><a href="{{config.url}}/admin/menus">Menus</a></li>
-                <li><a href="{{config.url}}/admin/media">Media</a></li>
-                <li class="active"><a href="{{config.url}}/admin/config">Config</a></li>
+                <li><a href="{{config.url2}}/admin/pages">Pages</a></li>
+                <li><a href="{{config.url2}}/admin/blog">Blog</a></li>
+                <li><a href="{{config.url2}}/admin/menus">Menus</a></li>
+                <li><a href="{{config.url2}}/admin/media">Media</a></li>
+                <li class="active"><a href="{{config.url2}}/admin/config">Config</a></li>
             </ul>
 
-            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url}}/admin/logout" class="navbar-link">Logout</a></p>
+            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url2}}/admin/logout" class="navbar-link">Logout</a></p>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
@@ -102,7 +102,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "{{config.url}}/api/config",
+                    url: "{{config.url2}}/api/config",
                     data: theData,
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus, errorThrown.message);

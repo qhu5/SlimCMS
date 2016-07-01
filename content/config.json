@@ -1,4 +1,5 @@
 {
+    "__comment": "password is `admin`",
     "title": "Title of the Page",
     "description": "General Description of the page",
     "user": "admin",

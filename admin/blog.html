@@ -9,10 +9,10 @@
     <title>SlimCMS Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{config.static_url}}/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="{{config.static_url}}/admin/css/style.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -33,13 +33,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{config.url}}/admin/pages">Pages</a></li>
-                <li class="active"><a href="{{config.url}}/admin/blog">Blog</a></li>
-                <li><a href="{{config.url}}/admin/menus">Menus</a></li>
-                <li><a href="{{config.url}}/admin/media">Media</a></li>
-                <li><a href="{{config.url}}/admin/config">Config</a></li>
+                <li><a href="{{ config.url }}/admin/pages">Pages</a></li>
+                <li class="active"><a href="{{ config.url }}/admin/blog">Blog</a></li>
+                <li><a href="{{ config.url }}/admin/menus">Menus</a></li>
+                <li><a href="{{ config.url }}/admin/media">Media</a></li>
+                <li><a href="{{ config.url }}/admin/config">Config</a></li>
             </ul>
-            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url}}/admin/logout" class="navbar-link">Logout</a></p>
+            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{ config.url }}/admin/logout" class="navbar-link">Logout</a></p>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
@@ -51,7 +51,7 @@
             <ul class="list-group">
                 {% for post in blog %}
                 <li class="list-group-item">
-                    <a href="{{config.url}}/blog/{{post.Slug|e}}">{{post.Title}}</a>
+                    <a href="{{ config.url }}/blog/{{post.Slug|e}}">{{post.Title}}</a>
                     <button id="del-{{post.DateTime}}_{{post.Slug}}" data-slug="{{post.DateTime}}_{{post.Slug}}" type="button" class="btn btn-danger btn-xs delete" title="Delete" style="float: right;">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
@@ -90,14 +90,14 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- Make sure to add jQuery - download the most recent version at http://jquery.com/ -->
 <script src="{{ config.static_url }}/themes/default/js/vendor/jquery.js"></script>
-<script src="{{config.static_url}}/admin/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="{{config.static_url}}/admin/ckeditor/adapters/jquery.js"></script>
-<script src="{{config.static_url}}/admin/js/Util.js"></script><script src="{{config.static_url}}/admin/js/bootstrap.min.js"></script>
+<script src="{{ config.static_url }}/admin/ckeditor/ckeditor.js"></script>
+<script src="{{ config.static_url }}/admin/ckeditor/adapters/jquery.js"></script>
+<script src="{{ config.static_url }}/admin/js/Util.js"></script><script src="{{ config.static_url }}/admin/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         $( 'textarea.editor' ).ckeditor({
             "extraPlugins": "imagebrowser",
-            "imageBrowser_listUrl": "{{config.url}}/api/media"
+            "imageBrowser_listUrl": "{{ config.url }}/api/media"
         });
 
         $("#inputTitle").on("focusout", function(){
@@ -118,7 +118,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "{{config.url}}/api/blog",
+                url: "{{ config.url }}/api/blog",
                 //dataType: "JSON",
                 data: theData,
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -134,18 +134,18 @@
             var slug = $(this).data("slug");
             $.ajax({
                 type: "DELETE",
-                url: "{{config.url}}/api/blog/"+slug,
+                url: "{{ config.url }}/api/blog/"+slug,
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown.message);
                 },
                 success: function(msg) {
-                    window.location = "{{config.url}}/admin/blog";
+                    window.location = "{{ config.url }}/admin/blog";
                 }
             });
         });
 
         $(".edit").on("click", function(){
-            window.location = "{{config.url}}/admin/blog/" + $(this).data("slug");
+            window.location = "{{ config.url }}/admin/blog/" + $(this).data("slug");
         });
     });
 </script>

@@ -9,10 +9,10 @@
     <title>SlimCMS Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{config.static_url}}/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="{{config.static_url}}/admin/css/style.css" rel="stylesheet">
+    <link href="{{ config.static_url }}/admin/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -33,14 +33,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{config.url}}/admin/pages">Pages</a></li>
-                <li><a href="{{config.url}}/admin/blog">Blog</a></li>
-                <li><a href="{{config.url}}/admin/menus">Menus</a></li>
-                <li class="active"><a href="{{config.url}}/admin/media">Media</a></li>
-                <li><a href="{{config.url}}/admin/config">Config</a></li>
+                <li><a href="{{ config.url }}/admin/pages">Pages</a></li>
+                <li><a href="{{ config.url }}/admin/blog">Blog</a></li>
+                <li><a href="{{ config.url }}/admin/menus">Menus</a></li>
+                <li class="active"><a href="{{ config.url }}/admin/media">Media</a></li>
+                <li><a href="{{ config.url }}/admin/config">Config</a></li>
             </ul>
 
-            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{config.url}}/admin/logout" class="navbar-link">Logout</a></p>
+            <p class="navbar-text navbar-right">Signed in as Admin - <a href="{{ config.url }}/admin/logout" class="navbar-link">Logout</a></p>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
@@ -49,7 +49,7 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <form action="{{config.url}}/admin/media" method="post" enctype="multipart/form-data">
+            <form action="{{ config.url }}/admin/media" method="post" enctype="multipart/form-data">
                 <label for="file">Filename:</label>
                 <input class="form-control input-lg" type="file" name="file" id="file"><br>
                 <button id="btnSave" type="button" class="btn btn-success btn-lg btn-block">Save</button>
@@ -74,7 +74,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <!-- Make sure to add jQuery - download the most recent version at http://jquery.com/ -->
 <script src="{{ config.static_url }}/themes/default/js/vendor/jquery.js"></script>
-<script src="{{config.static_url}}/admin/js/bootstrap.min.js"></script>
+<script src="{{ config.static_url }}/admin/js/bootstrap.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -88,19 +88,19 @@
             console.log(img);
             $.ajax({
                 type: "DELETE",
-                url: "{{config.url}}/api/media/"+img,
+                url: "{{ config.url }}/api/media/"+img,
                 //data: { slug: "new" },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown.message);
                 },
                 success: function(msg) {
-                    window.location = "{{config.url}}/admin/media";
+                    window.location = "{{ config.url }}/admin/media";
                 }
             });
         });
 
         $(".edit").on("click", function(){
-            window.location = "{{config.url}}/admin/menus/" + $(this).data("slug");
+            window.location = "{{ config.url }}/admin/menus/" + $(this).data("slug");
         });
 
         $("#btnAddVar").on("click", function(){
